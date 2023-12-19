@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main-store.css">
+</head>
+<body>
+<h1>Product Details</h1>
+
+<div class="product-container">
+<div id="productDetails">
+    <h2 id="productName"></h2>
+    <p id="productDescription"></p>
+    <p id="productPrice"></p>
+    <img id="productImage" src="" alt="Product Image">
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve the product details from the URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('name');
+
+        // Make an AJAX request to the server to get the product details
+        fetch('/Product?name=' + productName)
+            .then(response => response.json())
+            .then(product => {
+                // Display the product details
+                document.getElementById('productName').textContent = product.name_product;
+                document.getElementById('productDescription').textContent = product.description;
+                document.getElementById('productPrice').textContent = product.price;
+                document.getElementById('productImage').src = product.photo_product;
+                document.getElementById('productImage').alt = product.name_product;
+            })
+            .catch(error => console.error('Error fetching product details:', error));
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('name');
+
+
+        fetch('/Product?name=' + productName)
+            .then(response => response.json())
+            .then(product => {
+
+                document.getElementById('productName').textContent = product.name_product;
+                document.getElementById('productDescription').textContent = product.description;
+                document.getElementById('productPrice').textContent = product.price;
+                document.getElementById('productImage').src = product.photo_product;
+                document.getElementById('productImage').alt = product.name_product;
+
+
+                var addToCartButton = document.createElement('button');
+                addToCartButton.textContent = 'Добавить в корзину';
+                addToCartButton.addEventListener('click', function() {
+                    addToCart(product);
+                    window.location.href = '/statics/main-page.html';
+
+
+                });
+                document.getElementById('productDetails').appendChild(addToCartButton);
+            })
+            .catch(error => console.error('Error fetching product details:', error));
+    });
+
+    function addToCart(product) {
+        fetch('/Product?name=' + product.name_product, { method: 'POST' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('Product added to cart:', product.name_product);
+
+            })
+            .catch(error => console.error('Ошибка при добавлении товара в корзину:', error));
+    }
+</script>
+</body>
+</html>

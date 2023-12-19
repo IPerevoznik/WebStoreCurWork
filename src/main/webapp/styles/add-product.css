@@ -1,0 +1,78 @@
+/*add-product.css*/
+body {
+
+    background-image: url("/photo/main-welcome-page.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+}
+
+.input-section {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: flex;
+}
+
+.input-fields {
+    text-align: left;
+    flex: 1; /* Занимаем доступное пространство слева */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px; /* Добавляем отступ справа */
+}
+
+.input-fields > input[type="text"],
+.input-fields > textarea {
+    width: calc(100% - 40px); /* Отнимаем от общей ширины поля величину отступа */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-fields > input[type="submit"] {
+    background-color: #4c81af;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.image-upload {
+    text-align: center;
+    padding: 20px;
+}
+.drop-area {
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    line-height: 300px;
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+.file-name {
+    text-align: center;
+    font-size: 16px;
+    color: #4c81af;
+    margin-top: 10px; /* Перемещаем надпись с названием файла над кнопкой */
+}

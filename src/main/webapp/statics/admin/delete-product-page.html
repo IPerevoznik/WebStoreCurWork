@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Product</title>
+    <link rel="stylesheet" type="text/css" href="/styles/delete-product.css">
+</head>
+<body>
+<h1>Delete Product</h1>
+<input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search for products...">
+<ul id="productList">
+</ul>
+<script>
+
+    function displayProducts(products) {
+        var productList = document.getElementById('productList');
+        productList.innerHTML = '';
+
+        products.forEach(function(product) {
+            var li = document.createElement('li');
+
+            var productImg = document.createElement('img');
+            productImg.src = product.photo_product;
+            li.appendChild(productImg);
+
+            var productInfo = document.createElement('div');
+            productInfo.innerHTML = '<p>' + product.name_product + '</p>' +
+                '<p>Описание: ' + product.description + '</p>' +
+                '<p>Цена: ' + product.price + '</p>';
+            li.appendChild(productInfo);
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', function() {
+                deleteProduct(product.name_product);
+            });
+
+            li.appendChild(deleteButton);
+            productList.appendChild(li);
+        });
+    }
+    function deleteProduct(productName) {
+
+        fetch('/DeleteProduct?productName=' + productName, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ productName: productName })
+        })
+            .then(response => {
+                if (response.ok) {
+
+                    fetchProducts();
+                } else {
+                    console.error('Ошибка удаления товара');
+                }
+            })
+            .catch(error => console.error('Ошибка удаления товара:', error));
+    }
+
+
+
+    function fetchProducts() {
+        fetch('/DeleteProduct', { method: 'GET' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                displayProducts(data);
+            })
+            .catch(error => console.error('Ошибка при получении данных:', error));
+    }
+    function filterProducts() {
+        var input, filter, ul, li, txtValue, i;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById('productList');
+        li = ul.getElementsByTagName('li');
+        for (i = 0; i < li.length; i++) {
+            txtValue = li[i].textContent || li[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = '';
+            } else {
+                li[i].style.display = 'none';
+            }
+        }
+    }
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchProducts();
+    });
+</script>
+</body>
+</html>

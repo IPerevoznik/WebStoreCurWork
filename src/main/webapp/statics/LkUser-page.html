@@ -1,0 +1,26 @@
+<!-- LkUser-page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" type="text/css" href="/styles/user-lk-store.css">
+</head>
+<body>
+
+<form id="userForm">
+    <h1>Личный кабинет</h1>
+    <label for="emailInput">Email:</label>
+    <input type="email" id="emailInput" name="email" required><br><br>
+    <label for="addressInput">Адрес доставки:</label>
+    <input type="text" id="addressInput" name="address" required><br><br>
+    <input type="submit" value="Сохранить">
+    <button onclick="location.href='/statics/welcome-page.html'">На главную</button>
+    <button id="goToStoreBtn">В магазин</button>
+    <div id="messageDiv"></div>
+    <script src="/js/user-profile.js"></script>
+</form>
+
+
+</body>
+</html>

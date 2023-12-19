@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформление покупки</title>
+    <link rel="stylesheet" type="text/css" href="/styles/making-purchase.css">
+</head>
+<body>
+<div class="container">
+    <form id="purchaseForm">
+        <h2>Оформление покупки</h2>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+        <label for="address">Адрес доставки:</label>
+        <input type="text" id="address" name="address"><br><br>
+        <button type="submit">Подтвердить покупку</button>
+        <a href="/statics/main-store.html">Вернуться в магазин</a>
+    </form>
+</div>
+
+<script>
+    function fetchUserData() {
+        fetch('/MakingPurchase')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('email').value = data.email;
+                document.getElementById('address').value = data.address;
+            })
+            .catch(error => console.error('Ошибка:', error));
+    }
+
+    window.onload = function() {
+        fetchUserData();
+    };
+</script>
+</body>
+</html>

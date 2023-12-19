@@ -1,0 +1,92 @@
+/* main-store.css */
+body {
+    background-image: url("/photo/main-welcome-page.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+
+#searchInput, #tagsContainer {
+    width: 60%;
+    max-width: 600px; /* Установите одинаковую максимальную ширину для поисковой строки и контейнера тегов */
+    margin: 0 auto; /* Центрируйте элементы */
+}
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
+}
+
+#searchInput {
+    width: 90%;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.product-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+button {
+    background-color: #4c81af;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.basket-button {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #4c81af;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#tagsContainer {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center; /* Центрирование содержимого контейнера тегов */
+}
+
+#tagsContainer button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: 1px solid #CCC;
+    background-color: #f4f4f4;
+    display: inline-block; /* Размещение кнопок тегов в строку */
+    color: #000;
+}

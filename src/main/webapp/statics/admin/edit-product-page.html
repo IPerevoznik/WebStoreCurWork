@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+    <link rel="stylesheet" type="text/css" href="/styles/add-product.css">
+</head>
+<body>
+<div class="container">
+
+<form id="editProductForm" action="/EditProduct" method="post" enctype="multipart/form-data">
+    <div class="input-section">
+        <div class="input-fields">
+        <h1>Edit Product</h1>
+                <label for="name">Название:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="description">Описание:</label><br>
+                 <textarea id="description" name="description"></textarea><br>
+                    <label for="price">Цена:</label><br>
+                    <input type="text" id="price" name="price"><br>
+                        <label for="tag">Тег:</label><br>
+                    <input type="text" id="tag" name="tag"><br>
+                     <input type="submit" value="Добавить продукт">
+        </div>
+        <div class="image-upload">
+            <div class="drop-area" id="dropArea">
+                <div id="drop-text">Перетащите сюда изображение</div>
+                <input type="file" id="fileElem" name="fileInput" accept="image/*" style="display:none;">
+                <input type="hidden" id="fileInput" name="fileInput">
+                <div id="fileInputName" class="file-name"></div>
+            </div>
+        </div>
+    </div>
+</form>
+    <script>
+        const fileInput = document.getElementById('fileElem');
+        const dropArea = document.getElementById('dropArea');
+
+        fileInput.addEventListener('change', function() {
+            const fileInputName = document.getElementById('fileInputName');
+            fileInputName.textContent = this.files[0].name;
+        });
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropArea.classList.add('highlight');
+        }
+
+        function unhighlight(e) {
+            dropArea.classList.remove('highlight');
+        }
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+
+            if (files.length > 0) {
+                fileInput.files = files;
+                const fileInputName = document.getElementById('fileInputName');
+                fileInputName.textContent = files[0].name;
+            }
+        }
+    </script>
+</div>
+
+
+</body>
+</html>

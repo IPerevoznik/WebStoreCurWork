@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image</title>
+    <link rel="stylesheet" type="text/css" href="/styles/add-product.css">
+    <style>
+        #dropArea {
+            border: 2px dashed #ccc;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="input-section">
+    <div class="image-upload">
+<h1>Upload Image</h1>
+<div id="dropArea" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+    Drop image here
+</div>
+</div>
+<script>
+    function dragOverHandler(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+    }
+
+    function dropHandler(event) {
+        event.preventDefault();
+        var files = event.dataTransfer.files;
+        handleFiles(files);
+    }
+
+    function handleFiles(files) {
+        var file = files[0];
+        // Check if the uploaded file is an image
+        if (file.type.match('image.*')) {
+            // Use FormData to send the file to the server
+            var formData = new FormData();
+            formData.append('image', file);
+
+            // Send the file to the server using Fetch API
+            fetch('/UpdateImageServlet', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.replace('/statics/welcome-page.html');
+                    } else {
+                        throw new Error('File upload failed');
+                    }
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
+                });
+        } else {
+            alert('Please upload an image file');
+        }
+    }
+</script>
+</div>
+</body>
+</html>

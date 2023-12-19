@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Store</title>
+    <link rel="stylesheet" type="text/css" href="/styles/delete-product.css">
+</head>
+<body>
+<h1>Корзина</h1>
+<input type="text" id="searchInput" oninput="filterProducts()" placeholder="Поиск по продуктам">
+<ul id="productList"></ul>
+<button onclick="redirectToPurchasePage()">Оформить покупку</button>
+<script src = "/js/basket.js"></script>
+<script>
+    function filterProducts() {
+        var input, filter, ul, li, txtValue, i;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById('productList');
+        li = ul.getElementsByTagName('li');
+        for (i = 0; i < li.length; i++) {
+            txtValue = li[i].textContent || li[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = '';
+            } else {
+                li[i].style.display = 'none';
+            }
+        }
+    }
+    function redirectToPurchasePage() {
+        window.location.href = '/statics/MakingPurchase.html';
+    }
+</script>
+</body>
+</html>

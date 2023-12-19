@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Магазин</title>
+
+  <link rel="stylesheet" type="text/css" href="/styles/main-store.css">
+</head>
+<body>
+<div class="container">
+  <h1>Добро пожаловать в основной магазин</h1>
+  <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Поиск по продуктам">
+  <form action="/MainStore" method="post">
+    <input type="submit" value="Личный кабинет" class="basket-button">
+  </form>
+  <button onclick="checkAuthorization()" style="margin-top: 5px;">Корзина</button>
+  <div id="tagsContainer"></div>
+  <div id="productList"></div>
+</div>
+<script src="/js/main-store.js"></script>
+</body>
+</html>
