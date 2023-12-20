@@ -53,7 +53,6 @@ public class User {
         this.basket = basket;
     }
 
-    // Methods for adding and removing from basket
     public void addToBasket(Product product) {
         basket.add(product);
     }
