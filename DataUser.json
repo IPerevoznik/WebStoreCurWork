@@ -5,17 +5,7 @@
     "admin": true,
     "emailPost": " ",
     "deliveryAddress": " ",
-    "basket": [
-      {
-        "name_product": "Rjn",
-        "description": "lkfdvmkdf",
-        "photo_product": "/photo/asinhronnyj-generator-ustrojstvo-i-princip-raboty-3.jpg",
-        "price": "900",
-        "tagProduct": [
-          "#коты"
-        ]
-      }
-    ]
+    "basket": []
   },
   {
     "name": "Oleg",

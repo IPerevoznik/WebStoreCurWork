@@ -1,9 +1,27 @@
 [
   {
-    "name_product": "Rjn",
-    "description": "lkfdvmkdf",
-    "photo_product": "/photo/asinhronnyj-generator-ustrojstvo-i-princip-raboty-3.jpg",
-    "price": "900",
+    "name_product": "KUKA KR 10",
+    "description": "Робот KUKA KR 10 R90 CR",
+    "photo_product": "/photo/Робот KUKA KR 10 R90 CR.jpg",
+    "price": "560000",
+    "tagProduct": [
+      "#роботы"
+    ]
+  },
+  {
+    "name_product": "KUKA KR10 R900",
+    "description": "Робот KUKA KR 10 R900",
+    "photo_product": "/photo/Робот KUKA KR 10 R900.jpg",
+    "price": "120000",
+    "tagProduct": [
+      "#роботы"
+    ]
+  },
+  {
+    "name_product": "НЕ ТОВАР",
+    "description": "для тестов ",
+    "photo_product": "/photo/cattttttttttttttttt.bmp",
+    "price": "80000",
     "tagProduct": [
       "#коты"
     ]
